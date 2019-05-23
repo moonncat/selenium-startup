@@ -1,6 +1,8 @@
 HELP.md
 .gradle
 /build/
+/bin/
+/.metadata/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###

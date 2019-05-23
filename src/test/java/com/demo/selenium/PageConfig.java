@@ -48,7 +48,7 @@ public class PageConfig {
 	@Scope("singleton")
     @Lazy
 	public WebDriver getWebDriver() {
-		String codeBase=ClassLoader.getSystemClassLoader().getResource("").getPath();
+		String codeBase=environment.getProperty("webDriver");
         
 		System.setProperty("webdriver.chrome.driver",codeBase+ "/chromedriver.exe");
         WebDriver driver = new ChromeDriver(); 

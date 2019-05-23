@@ -113,16 +113,16 @@ public class DemoApplicationTests {
 	}
 	@Test
 	public void createUser() {
-		try {
-			User u=new User();
-			u.name="name1";
-			u.pwd="pwd1";
-			u.createdUser="user1";
-			System.out.println(u.id+u.name);
-			System.out.println(mds.create(u));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// try {
+		// 	User u=new User();
+		// 	u.name="name1";
+		// 	u.pwd="pwd1";
+		// 	u.createdUser="user1";
+		// 	System.out.println(u.id+u.name);
+		// 	System.out.println(mds.create(u));
+		// } catch (Exception e) {
+		// 	e.printStackTrace();
+		// }
 		
 	}
 }
