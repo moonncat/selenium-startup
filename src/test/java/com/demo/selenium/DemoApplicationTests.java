@@ -76,8 +76,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void printPath() {
-		System.out.println(ClassLoader.getSystemClassLoader().getResource("").getPath());
-		System.out.println(this.environment.getProperty("dblink"));
+		System.out.println(this.environment.getProperty("test"));
 	}
 	@Test
 	public void getUser() {
@@ -113,16 +112,16 @@ public class DemoApplicationTests {
 	}
 	@Test
 	public void createUser() {
-		// try {
-		// 	User u=new User();
-		// 	u.name="name1";
-		// 	u.pwd="pwd1";
-		// 	u.createdUser="user1";
-		// 	System.out.println(u.id+u.name);
-		// 	System.out.println(mds.create(u));
-		// } catch (Exception e) {
-		// 	e.printStackTrace();
-		// }
+		try {
+			User u=new User();
+			u.name="name1"+UUID.randomUUID();
+			u.pwd="pwd1";
+			u.createdUser="user1";
+			System.out.println(u.id+u.name);
+			//System.out.println(mds.create(u));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 }

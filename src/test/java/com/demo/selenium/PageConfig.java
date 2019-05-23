@@ -1,13 +1,11 @@
 package com.demo.selenium;
 
-import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.context.annotation.PropertySource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
@@ -25,6 +24,7 @@ import com.mysql.cj.jdbc.Driver;
 
 @EnableAspectJAutoProxy
 @Configuration
+@PropertySource(value= {"classpath:db.properties","classpath:application.properties"})
 public class PageConfig {
 
 	@Bean
@@ -83,10 +83,16 @@ public class PageConfig {
 			SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 			factoryBean.setDataSource((DataSource) ds);
 			ssf = factoryBean.getObject();
+	    	ssf.getConfiguration().addMapper(UserMapper.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ssf;
+	}
+
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
 	}
 }

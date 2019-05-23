@@ -2,6 +2,7 @@ package com.demo.selenium;
 
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
@@ -18,15 +19,14 @@ import java.util.List;
 public class MysqlDataService {
 
 	@Autowired
-	private Environment environment;
-	@Autowired
-	SqlSessionFactory ssf;
+	private SqlSessionFactory ssf;
+	@Value("${dblink}")
+	private String dblink;
 	
 	public MapperFactoryBean<UserMapper> getUserMapperFactoryBean() {
 
     	MapperFactoryBean<UserMapper> mfb=new MapperFactoryBean<UserMapper>();
     	mfb.setSqlSessionFactory(ssf);
-    	ssf.getConfiguration().addMapper(UserMapper.class);
     	return mfb;
 	}
 
@@ -37,7 +37,7 @@ public class MysqlDataService {
         try {
 
         	MysqlDataSource mds=new MysqlDataSource();
-        	mds.setURL(environment.getProperty("dblink"));
+        	mds.setURL(this.dblink);
 
         	Connection con= mds.getConnection();
         	
