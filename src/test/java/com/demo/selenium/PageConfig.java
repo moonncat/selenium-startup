@@ -27,11 +27,6 @@ import com.mysql.cj.jdbc.Driver;
 @PropertySource(value= {"classpath:db.properties","classpath:application.properties"})
 public class PageConfig {
 
-	@Bean
-	@Scope("prototype")
-	public BaiduPage getBaiduPage() {
-		return new BaiduPage();
-	}
 	
 	@Autowired
 	private Environment environment;
@@ -55,21 +50,6 @@ public class PageConfig {
         return driver;
 	}
 	
-	@Bean
-	public ScreenShotService getScreenShotService() {
-		return new ScreenShotService();
-	}
-
-	@Bean
-	public TestLogger getTestLogger(){
-		return new TestLogger();
-	}
-	
-	@Bean
-	public MysqlDataService getMysqlDataService() {
-		return new MysqlDataService();
-	}
-
 	@Bean("getSqlSessionFactory")
 	public SqlSessionFactory getSqlSessionFactory() {
 

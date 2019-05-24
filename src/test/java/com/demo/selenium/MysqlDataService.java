@@ -3,8 +3,7 @@ package com.demo.selenium;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 import com.demo.selenium.mapper.UserMapper;
 import com.demo.selenium.models.User;
@@ -13,9 +12,9 @@ import org.apache.ibatis.session.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MysqlDataService {
 
 	@Autowired
