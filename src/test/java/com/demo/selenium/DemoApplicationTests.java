@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.openqa.selenium.WebDriver;
@@ -36,6 +37,8 @@ public class DemoApplicationTests {
 	private Environment environment;
 	@Autowired
 	private MysqlDataService mds;
+	@Autowired
+	ApplicationContext ac;
 
 	@Test
 	public void contextLoads() {
@@ -76,7 +79,13 @@ public class DemoApplicationTests {
 
 	@Test
 	public void printPath() {
-		System.out.println(this.environment.getProperty("test"));
+		System.out.println(this.environment.getProperty("env"));
+		System.out.println(this.te.id);
+		System.out.println(this.te.toString());
+		TestEnvironment te2=ac.getBean(TestEnvironment.class);
+		System.out.println(te2.id);
+		System.out.println(te2.toString());
+		
 	}
 	@Test
 	public void getUser() {
