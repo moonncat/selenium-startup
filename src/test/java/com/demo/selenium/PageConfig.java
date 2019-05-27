@@ -32,12 +32,8 @@ public class PageConfig {
 	private Environment environment;
 	@Autowired
 	ApplicationContext ac;
-	
-	@Bean
-	public TestEnvironment getTestEnvironment() {
 
-		return new TestEnvironment(environment.getProperty("env","default"));
-	}
+
 	
 	@Bean
 	@Scope("singleton")
